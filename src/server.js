@@ -17,5 +17,5 @@ app.get("/api/test", function(req, res) {
 
 app.get("/", function(req, res) {
     console.log("home");
-    res.sendFile('index.html');
+    res.sendFile('src/index.html');
 });
