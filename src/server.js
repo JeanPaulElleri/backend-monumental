@@ -11,14 +11,13 @@ var server = app.listen(process.env.PORT || 8080, function () {
     console.log("App now running on port", port);
 });
 
-//funzione che serve per renderizare la view giusta
+//middleware che renderizza la view giusta
 function sendViewMiddleware(req, res, next) {
     res.sendView = function(view) {
         return res.sendFile(__dirname + "/views/" + view);
     }
     next();
 }
-
 app.use(sendViewMiddleware);
 
 
@@ -29,5 +28,4 @@ app.get("/api/test", function(req, res) {
 app.get("/", function(req, res, next) {
     console.log("home");
     res.sendView('index.html');
-
 });
