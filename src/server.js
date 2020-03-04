@@ -14,3 +14,7 @@ var server = app.listen(process.env.PORT || 8080, function () {
 app.get("/api/test", function(req, res) {
     console.log("funziona");
 });
+
+app.get("/", function(req, res) {
+    console.log("home");
+});
