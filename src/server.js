@@ -23,6 +23,24 @@ app.use(sendViewMiddleware);
 
 app.get("/api/test", function(req, res) {
     console.log("funziona");
+
+    // parse application/json
+    app.use(bodyParser.json());
+    //parse application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: true }));
+    const Sequelize = require('sequelize');
+    // initialize an instance of Sequelize
+    const sequelize = new Sequelize({
+      database: 'users_db',
+      username: 'root',
+      password: '',
+      dialect: 'mysql',
+    });
+    // check the databse connection
+    sequelize
+      .authenticate()
+      .then(() => console.log('Connection has been established successfully.'))
+      .catch(err => console.error('Unable to connect to the database:', err));
 });
 
 app.get("/", function(req, res, next) {
